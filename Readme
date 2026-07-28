@@ -1,43 +1,84 @@
-# Delhi Power Consumption Analysis (2023)
+Delhi Power Consumption Analysis (2023)
+An end-to-end data engineering and analytics project examining 24-hour power consumption patterns in Delhi — built with a full pipeline spanning NoSQL staging, ETL, SQL analytics, statistical testing, and BI dashboarding.
 
-## Problem Statement
-Analyzed 24-hour power consumption patterns in Delhi to understand demand fluctuations across time, temperature, and day type, enabling data-driven recommendations for load management.
+🎯 Problem Statement
+Power utilities need to understand when and why demand spikes occur in order to manage grid load efficiently. This project analyzes hourly consumption data to answer:
+When does peak electricity demand occur during the day?
+Does consumption differ significantly between weekdays and weekends?
+How does temperature influence load demand?
+What actionable recommendations can utility providers draw from this?
 
-## Dataset
-8,737 hourly records including timestamp, temperature, load demand, solar generation, weekend/holiday indicators.
+🗂️ Dataset
+Records: 8,737 hourly observations (one full year)
+Fields: timestamp, temperature, load demand, solar generation, holiday indicator, weekend indicator, day of week, hour of day
+Quality: No missing values or duplicates found during validation
 
-## Tools & Skills Used
-| Category | Tools |
-|---|---|
-| Data Storage (NoSQL) | MongoDB Atlas |
-| ETL | Python, Pandas |
-| Data Storage (SQL) | PostgreSQL (Supabase) |
-| Statistics | SciPy (Hypothesis Testing) |
-| BI Dashboard | Google Looker Studio |
-| Environment | Google Colab |
+🛠️ Tools & Skills Used
+Category
+Tools / Skills
+Programming
+Python
+Data Manipulation
+Pandas, NumPy
+NoSQL Staging
+MongoDB Atlas
+ETL Pipeline
+Python (Extract → Transform → Load)
+Relational Database
+PostgreSQL (Supabase)
+Query Language
+SQL (Aggregations, GROUP BY, CASE statements)
+Statistics
+Hypothesis Testing (Independent t-test) via SciPy
+BI & Visualization
+Google Looker Studio
+Environment
+Google Colab
+Version Control
+Git & GitHub
 
-## Approach
-1. **Extract:** Loaded raw hourly consumption data
-2. **Load to NoSQL:** Ingested raw data into MongoDB Atlas as an unstructured staging layer
-3. **Transform:** Cleaned data, converted timestamps, extracted time-based features
-4. **Load to SQL:** Migrated cleaned data into PostgreSQL (Supabase) for structured querying
-5. **Analyze:** Ran SQL aggregation queries and statistical hypothesis testing
-6. **Visualize:** Built an interactive BI dashboard in Looker Studio
+🔍 Pipeline Architecture
+Raw CSV Data
+     ↓
+MongoDB Atlas (NoSQL staging — raw, unstructured layer)
+     ↓
+Python ETL (cleaning, datetime parsing, feature engineering)
+     ↓
+PostgreSQL / Supabase (structured, query-ready layer)
+     ↓
+SQL Analysis + Statistical Testing
+     ↓
+Looker Studio Dashboard
 
-## Key Insights
-1. **Peak Demand Hours:** Load peaks consistently between 7-9 PM, reflecting evening residential demand surge.
-2. **Weekday vs Weekend:** Weekend load is statistically significantly higher than weekday load (p < 0.001, two-sample t-test).
-3. **Temperature Impact:** Contrary to the assumption that hot weather drives peak demand via AC usage, load was highest during colder periods — suggesting heating-driven consumption patterns.
+📈 Key Insights
+Peak Demand Window: Load consistently peaks between 7–9 PM, reflecting the evening residential demand surge as households return home and use appliances, lighting, and heating/cooling systems.
+Weekday vs Weekend: Weekend load is statistically significantly higher than weekday load (independent t-test: p < 0.001), suggesting different usage patterns when residents are home for longer stretches.
+Temperature Effect (Counter-Intuitive Finding): Rather than peaking in hot weather due to air conditioning, load demand was highest during colder periods — indicating that heating-related consumption may be a stronger driver of demand than cooling in this dataset.
 
-## Dashboard
-Interactive dashboard built in Looker Studio featuring:
-- Hourly load distribution
-- Temperature vs load correlation
-- Weekday vs weekend comparison
+📊 Dashboard
+An interactive dashboard was built in Google Looker Studio featuring:
+Hourly Load Distribution — identifying peak and off-peak hours
+Temperature vs Load Correlation — visualizing the demand-temperature relationship
+Weekday vs Weekend Comparison — highlighting behavioral differences in consumption
+(Dashboard screenshots included below)
 
-## Business Recommendation
-Given consistent peak demand during 7-9 PM, utility providers could consider time-of-use pricing or demand-response programs targeted at this window to reduce grid stress, particularly during colder months when heating-related load is highest.
+💡 Business Recommendation
+Given the consistent 7–9 PM peak demand window — particularly pronounced during colder months — utility providers could consider:
+Time-of-use pricing to incentivize load shifting away from peak hours
+Targeted demand-response programs during winter evenings to reduce grid stress
+Infrastructure planning that accounts for heating-driven demand rather than assuming cooling-driven summer peaks
 
-## Author
-**Navya Vashistha**
-[LinkedIn](https://linkedin.com/in/navya-vashistha-71386629b) | [GitHub](https://github.com/Navya2057)
+📁 Repository Structure
+├── Delhi_Power_Consumption_Analysis.ipynb   # Full pipeline notebook
+├── README.md     # Project documentation
+
+🚀 How to Run
+Clone this repository or download the notebook
+Open in Google Colab
+Install dependencies: pymongo, sqlalchemy, psycopg2-binary, pandas, scipy
+Set up your own MongoDB Atlas and Supabase connection strings
+Run all cells sequentially
+
+👤 Author
+Navya Vashistha
+LinkedIn | GitHub
