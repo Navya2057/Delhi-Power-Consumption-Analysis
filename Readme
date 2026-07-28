@@ -1,0 +1,43 @@
+# Delhi Power Consumption Analysis (2023)
+
+## Problem Statement
+Analyzed 24-hour power consumption patterns in Delhi to understand demand fluctuations across time, temperature, and day type, enabling data-driven recommendations for load management.
+
+## Dataset
+8,737 hourly records including timestamp, temperature, load demand, solar generation, weekend/holiday indicators.
+
+## Tools & Skills Used
+| Category | Tools |
+|---|---|
+| Data Storage (NoSQL) | MongoDB Atlas |
+| ETL | Python, Pandas |
+| Data Storage (SQL) | PostgreSQL (Supabase) |
+| Statistics | SciPy (Hypothesis Testing) |
+| BI Dashboard | Google Looker Studio |
+| Environment | Google Colab |
+
+## Approach
+1. **Extract:** Loaded raw hourly consumption data
+2. **Load to NoSQL:** Ingested raw data into MongoDB Atlas as an unstructured staging layer
+3. **Transform:** Cleaned data, converted timestamps, extracted time-based features
+4. **Load to SQL:** Migrated cleaned data into PostgreSQL (Supabase) for structured querying
+5. **Analyze:** Ran SQL aggregation queries and statistical hypothesis testing
+6. **Visualize:** Built an interactive BI dashboard in Looker Studio
+
+## Key Insights
+1. **Peak Demand Hours:** Load peaks consistently between 7-9 PM, reflecting evening residential demand surge.
+2. **Weekday vs Weekend:** Weekend load is statistically significantly higher than weekday load (p < 0.001, two-sample t-test).
+3. **Temperature Impact:** Contrary to the assumption that hot weather drives peak demand via AC usage, load was highest during colder periods — suggesting heating-driven consumption patterns.
+
+## Dashboard
+Interactive dashboard built in Looker Studio featuring:
+- Hourly load distribution
+- Temperature vs load correlation
+- Weekday vs weekend comparison
+
+## Business Recommendation
+Given consistent peak demand during 7-9 PM, utility providers could consider time-of-use pricing or demand-response programs targeted at this window to reduce grid stress, particularly during colder months when heating-related load is highest.
+
+## Author
+**Navya Vashistha**
+[LinkedIn](https://linkedin.com/in/navya-vashistha-71386629b) | [GitHub](https://github.com/Navya2057)
